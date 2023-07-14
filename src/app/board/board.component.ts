@@ -29,13 +29,15 @@ export class BoardComponent implements OnInit{
   }
 
   makeMove(idx: number) {
-    // if the square hasn't been selected yes
+    // if the square hasn't been selected yet
     if (!this.squares[idx]) {
       // put a X or O in its place
       this.squares.splice(idx, 1, this.player);
       // set the turn to the other player
       this.xIsNext = !this.xIsNext;
     }
+
+    this.winner = this.calculateWinner();
   }
 
   calculateWinner() {
